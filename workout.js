@@ -19,8 +19,8 @@ Module.register("workout",{
 		}, 86400000);
 	},
 	getDom: function() {
-		var max = max + (1/7);
-		var min = min + (1/7);
+		var max = this.max + (1/7);
+		var min = this.min + (1/7);
 		var wrapper = document.createElement("div");
 
 		this.pushups = Math.floor((Math.random()*(max-min + 1)) + min);
