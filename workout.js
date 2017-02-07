@@ -13,6 +13,7 @@ Module.register("workout",{
 		var max = 30;
 		var min = 10;
 		var self = this;
+		self.updateDom();
 		setInterval(function() {
 			self.updateDom();
 		}, 86400000);
