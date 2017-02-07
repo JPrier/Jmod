@@ -6,27 +6,27 @@ Module.register("workout",{
 		situpMin: 15,
 		squatMax: 50,
 		squatMin: 25,
-		pushups: Math 
-		text: "Todays Morning Exercise\n"
 	},
 	start: function() {
-		var max = 30;
-		var min = 10;
 		var self = this;
-		self.updateDom();
+		//self.updateDom();
 		setInterval(function() {
 			self.updateDom();
 		}, 86400000);
 	},
 	getDom: function() {
-		var max = this.max + (1/7);
-		var min = this.min + (1/7);
+		var exerciseText = this.randomExercises();
+		var exercise = document.createTextNode(exerciseText);
 		var wrapper = document.createElement("div");
-
-		this.pushups = Math.floor((Math.random()*(max-min + 1)) + min);
-		this.situps = Math.floor((Math.random()*(max-min + 1)) + min);
-		this.config.text += "Pushups: " + pushups.toString() + "\nSitups: " + situps.toString();
-		wrapper.innerHTML = this.config.text;
+		wrapper.appendChild(exercise);
 		return wrapper;
+	},
+	randomExercises: function() {
+		var pushups = Math.floor((Math.random()*(this.config.pushupMax-this.config.pushupMin + 1)) 
+			+ this.config.pushupMin);
+		var situps = Math.floor((Math.random()*(this.config.situpMax-this.config.situpMin + 1)) 
+			+ this.config.situpMin);
+		var eText = "Todays Morning Exercise:\nPushups: " + pushups.toString() + "\nSitups: " + situps.toString();
+		return eText;
 	}
 });
