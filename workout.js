@@ -9,7 +9,7 @@ Module.register("workout",{
 	},
 	start: function() {
 		var self = this;
-		//self.updateDom();
+		self.updateDom();
 		setInterval(function() {
 			self.updateDom();
 		}, 86400000);
@@ -18,6 +18,7 @@ Module.register("workout",{
 		var exerciseText = this.randomExercises();
 		var exercise = document.createTextNode(exerciseText);
 		var wrapper = document.createElement("div");
+		wrapper.className = this.config.classes ? this.config.classes : "thin xlarge bright";
 		wrapper.appendChild(exercise);
 		return wrapper;
 	},
